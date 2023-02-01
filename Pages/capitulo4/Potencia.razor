@@ -1,0 +1,33 @@
+@page "/Potencia"
+
+<div class = "form-group">
+    <h3 style="color: rgb(84, 123, 46);"> Buscar potencia</h3>
+
+<label >Escriba el número del que desea buscar la potencia  </label>
+<input type= "number" @bind-value="numero"/>
+</div>
+<label >Escriba la potencia a la que desea elevar el número </label>
+<input type= "number" @bind-value="potencia"/>
+
+ <button class="btn btn-primary " @onclick="Calcular">Calcular</button>
+   
+
+
+  <h4 >Resultado: @resultado</h4>
+   
+
+
+
+@code {
+    private double numero;
+    private double potencia;
+   private double resultado;
+
+    private void Calcular()
+    {
+       resultado=Math.Pow(numero,potencia);
+           
+        
+    }
+   
+}

@@ -1,0 +1,57 @@
+@page "/Convertir"
+
+<h3>Convertir número a palabras</h3>
+
+<div class="form-group">
+    <label for="inputNum">Ingrese un número:</label>
+    <input type="number" class="form-control" id="inputNum" @bind-value="num" />
+</div>
+
+<button class="btn btn-primary" @onclick="convertirAletra">Convertir</button>
+
+<p>Resultado: @result</p>
+
+@code {
+     int num;
+    String? numeroLetra;
+    String? result;
+
+
+    void convertirAletra(){
+         string[] unidades = new string[] { "cero", "uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve" };
+        string[] decenas = new string[] { "diez", "veinte", "treinta", "cuarenta", "cincuenta", "sesenta", "setenta", "ochenta", "noventa" };
+         string[] decenasYunidades = new string[] { "once", "doce", "trece", "catorce", "quince", "dieciseis", "diecisiete", "dieciocho", "diecinueve" };
+
+
+        if(num>0){
+
+            if (num == 10)
+         {
+            numeroLetra= "diez";
+            }
+         else if (num < 10)
+        {
+            numeroLetra= unidades[num];
+        
+         }
+        else if (num < 20)
+        {
+            numeroLetra= decenasYunidades[num - 11];
+        }
+        else if (num < 100)
+        {
+            numeroLetra= decenas[num / 10 - 1] + ((num % 10 != 0) ? " y " + unidades[num % 10] : "");
+        }
+        else if(num >= 100){
+
+        numeroLetra= "Mayor a 99";
+            
+        }
+        }
+        
+            
+
+
+
+    }
+}

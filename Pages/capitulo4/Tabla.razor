@@ -1,0 +1,47 @@
+@page "/Tabla"
+
+
+
+<div class = "form">
+    <h3 style="color: red;"> Tabla de multiplicacion</h3>
+
+<label >¿De que número desea la tabla? </label>
+<input type= "number" @bind-value="numero"/>
+
+ <button class="btn btn-primary " @onclick="Calcular">Calcular</button>
+   
+</div>
+<table class="table-bordered">
+    <thead>
+        <tr>
+            <th>numero</th>
+            <th>Resultado</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 1; i <= 10; i++)
+        {
+            <tr>
+                <td>@i x @numero</td>
+                <td>@(i * numero)</td>
+            </tr>
+        }
+    </tbody>
+    </table>
+
+
+
+@code {
+    private int numero;
+   
+
+    private void Calcular()
+    {
+       
+        for (int i = 1; i <= 10; i++)
+        { i=i*numero;
+           
+        }
+    }
+   
+}

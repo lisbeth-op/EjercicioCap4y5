@@ -1,0 +1,22 @@
+@page "/Factorial"
+
+<h3 style="color: red;" >Calcular Factorial</h3>
+<div>
+    <label for="numero">Ingrese un número:</label>
+    <input type="number" @bind="numero" />
+    <button class="btn btn-primary" @onclick="CFactorial">Calcular </button>
+    <p>El factorial de @numero es: @factorial</p>
+</div>
+
+@code {
+    private int numero;
+    private int factorial = 1;
+
+    private void CFactorial()
+    {
+        for (int i = 1; i <= numero; i++)
+        {
+            factorial *= i;
+        }
+    }
+}
