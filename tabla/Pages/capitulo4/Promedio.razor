@@ -1,0 +1,58 @@
+@page "/Promedio"
+
+
+<h3 style="color: rgb(255, 0, 123);"> Calcular Promedio de edades</h3>
+<div>
+    <label for="edad">Ingrese una edad:</label>
+    <input type="number" id="edad" @bind="edadInput" />
+    <button @onclick="AgregarEdad">Agregar Edad</button>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Edades Ingresadas</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var edad in edades)
+        {
+            <tr>
+                <td>@edad</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    Promedio de edad: @promedio
+    <br />
+    Edad más grande: @edadMax
+    <br />
+    Edad más joven: @edadMin
+</div>
+
+<button @onclick="Reiniciar">Reiniciar</button>
+
+@code {
+    private int edadInput;
+    private List<int> edades = new List<int>();
+    private int promedio;
+    private int edadMax = 0;
+    private int edadMin = 0;
+
+    private void AgregarEdad()
+    {
+        edades.Add(edadInput);
+        promedio = (int)edades.Average();
+        edadMax = edades.Max();
+        edadMin = edades.Min();
+    }
+
+    private void Reiniciar()
+    {
+        edades.Clear();
+        promedio = 0;
+        edadMax = 0;
+        edadMin = 0;
+    }
+}
